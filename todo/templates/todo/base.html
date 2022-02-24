@@ -1,0 +1,28 @@
+{% if user.is_authenticated %}
+<font color="white">
+<h2 style="background-color : #264b5d">LOGGED IN AS {{ user.username }}</h2>
+</font>
+<a href="{% url 'createtodo' %}"> <b> CREATE </b>  </a>
+<br>
+<a href="{% url 'currenttodos' %}"> <b> TO BE DONE  </b>  </a>
+<br>
+<a href="{% url 'completedtodos' %}"> <b> COMPLETED </b>  </a>
+
+<form action="{% url 'logoutuser' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" style="background-color : powderblue" >
+     LOG OUT
+    </button>
+</form>
+
+{% else %}
+
+<a href="{% url 'signupuser' %}">SIGN UP</a>
+<a href="{% url 'loginuser' %}">LOG IN</a>
+
+{% endif %}
+
+
+{% block content %}
+{% endblock %}
+

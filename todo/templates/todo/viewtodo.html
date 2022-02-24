@@ -1,0 +1,35 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+{{ error }}
+<h1 style="background-color : rgb(70,70,25)">
+    {{  todo.title }}
+</h1>
+
+<form method="POST">
+    {% csrf_token %}
+{{ form.as_p }}
+    <button type="submit" style="background-color : rgb(50,205,50)" >
+     SAVE
+ </button>
+</form>
+
+<form method="POST" action="{% url 'completetodo' todo.id %}">
+    {% csrf_token %}
+
+    <button type="submit" style="background-color : rgb(50,205,50)" >
+     COMPLETE
+ </button>
+</form>
+
+   <form method="POST" action="{% url 'deletetodo' todo.id %}">
+    {% csrf_token %}
+
+    <button type="submit" style="background-color : rgb(220,0,0)" >
+     DELETE
+   </button>
+  </form>
+
+
+
+{% endblock %}

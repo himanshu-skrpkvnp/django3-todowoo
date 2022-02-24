@@ -1,0 +1,31 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<h1 style="background-color : rgb(0,0,250)">
+  YOU HAVE SIGNED IN
+</h1>
+<ul>
+
+
+
+      {% for todo in todos %}
+
+      {% if todo.important %}
+
+      <b>
+       <a href="{% url 'viewtodo'  todo.id  %}"> <li> {{ todo.title }}</li> </a>
+      </b>
+      {% else %}
+      <a href="{% url 'viewtodo'  todo.id  %}">
+      <li> {{ todo.title }}</li> </a>
+
+      {% endif %}
+      {% if todo.memo %}
+      <pre><li>     - {{ todo.memo }}   </li></pre>
+      {% endif %}
+      </li>
+
+
+    {% endfor %}
+</ul>
+{% endblock %}

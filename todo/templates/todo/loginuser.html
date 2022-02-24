@@ -1,0 +1,17 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<h1 style="background-color : rgb(50,205,50)"> LOG IN  </h1>
+
+<h2 style="background-color : rgb(255,0,0)"> {{ error }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+ <button type="submit" style="background-color : rgb(50,205,50)" >
+     LOG IN
+ </button>
+</form>
+
+{% endblock %}
